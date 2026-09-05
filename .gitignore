@@ -9,6 +9,7 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 data/
+EMNIST_data/
 models/
 artifacts/
 mlruns/
