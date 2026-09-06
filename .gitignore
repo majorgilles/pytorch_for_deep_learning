@@ -11,5 +11,13 @@ __pycache__/
 data/
 EMNIST_data/
 models/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.torchscript
+*-images-idx3-ubyte
+*-labels-idx1-ubyte
 artifacts/
 mlruns/
