@@ -83,7 +83,7 @@ def exercise_1(learner_func):
                 return cases + [t]
             cases.append(t)
 
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             t = test_case()
             t.failed = True
             t.msg = f"Error when calling create_emnist_dataloaders: {e}"
@@ -199,7 +199,7 @@ def exercise_2(learner_func):
                 t = test_case()
                 if failed:
                     t.failed = True
-                    t.msg = f"Layer shape incompatibility in layer {layer_num} ({layer_num-1})"
+                    t.msg = f"Layer shape incompatibility in layer {layer_num} ({layer_num - 1})"
                     t.want = want
                     t.got = got
                     return cases + [t]
@@ -211,7 +211,7 @@ def exercise_2(learner_func):
                 if failed:
                     t.failed = True
                     t.msg = (
-                        f"Layer {layer_num} ({layer_num-1}) exceeds 256 hidden units"
+                        f"Layer {layer_num} ({layer_num - 1}) exceeds 256 hidden units"
                     )
                     t.want = "Hidden layer size less than or equal to 256 units"
                     t.got = got
@@ -227,7 +227,7 @@ def exercise_2(learner_func):
                 t.got = got
                 return cases + [t]
 
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             t = test_case()
             t.failed = True
             t.msg = f"Error when calling emnist_init_model: {e}"
@@ -344,7 +344,7 @@ def exercise_3(
                 t.got = got
                 return cases + [t]
 
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             t = test_case()
             t.failed = True
             t.msg = f"Error when calling train_emnist_model: {e}"
@@ -406,10 +406,10 @@ def exercise_4(learner_func, learner_model, learner_test_loader):
                 t.got = got
                 return cases + [t]
 
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             t = test_case()
             t.failed = True
-            t.msg = f"evaluate raised an exception"
+            t.msg = "evaluate raised an exception"
             t.want = "The accuracy percentage of the model on the test dataset."
             t.got = f'Evaluation ran into an error: "{e}"'
             return cases + [t]

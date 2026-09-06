@@ -4,11 +4,9 @@ import os
 import re
 
 import torch
-import torch.nn as nn
-import torch.optim as optim
-from torchvision import datasets, transforms
+from torch import nn, optim
 from torch.utils.data import RandomSampler, SequentialSampler
-
+from torchvision import datasets, transforms
 
 
 def get_train_test():
@@ -17,9 +15,9 @@ def get_train_test():
 
     # Check if the data folder exists to avoid re-downloading
     if os.path.exists(data_path) and os.path.isdir(data_path):
-        download = False
+        pass
     else:
-        download = True
+        pass
 
     # Precomputed mean and std for EMNIST Letters dataset
     mean = (0.1736,)
@@ -77,10 +75,10 @@ class TestBattery:
     def _create_reference_checks(self):
         checks_dict = {}
         if self.reference_checks is not None:
-            for key in self.reference_checks.keys():
+            for key in self.reference_checks:
                 check_fcn = getattr(self, f"{key}", None)
                 # run the corresponding method
-                got, want, failed = check_fcn()
+                got, _want, _failed = check_fcn()
                 checks_dict[key] = got
 
         return checks_dict
@@ -107,7 +105,6 @@ def check_shuffle(data_loader, should_shuffle):
 
 
 class DataLoaderBattery(TestBattery):
-
     def _get_reference_inputs(self):
         self.train_dataset, self.test_dataset = get_train_test()
         self.batch_size = 32
@@ -364,7 +361,7 @@ class TrainBattery(TestBattery):
     # no reference for this one
     def train_check(self):
         # Train for a second time and check that the loss decreases
-        second_train, loss_1 = self.learner_object(
+        _second_train, loss_1 = self.learner_object(
             self.trained_model,
             self.loss_function,
             self.optimizer,

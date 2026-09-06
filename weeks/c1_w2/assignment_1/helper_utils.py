@@ -2,9 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 from sklearn.metrics import accuracy_score
-from torchvision import datasets, transforms
-from torchvision.transforms import functional as F
-
 
 letter_ref = [
     "Dear Laurence",
@@ -69,9 +66,7 @@ def decode_word_imgs(word_imgs, model, device):
         # Iterate through each character image in the provided sequence
         for char_img in word_imgs:
             # Add a batch dimension to the tensor and move to target device
-            char_img = char_img.unsqueeze(0).to(
-                device
-            )
+            char_img = char_img.unsqueeze(0).to(device)
 
             # Forward pass to predict the character probabilities
             output = model(char_img)
@@ -111,7 +106,7 @@ def visualize_image(img, label=None, ax=None):
         # Squeeze the tensor to remove single-dimensional entries
         img = img.numpy().squeeze()
     # Check if the image is a numpy array
-    elif isinstance(img, np.ndarray):
+    elif isinstance(img, np.ndarray):  # noqa: SIM102
         # Check if the array has three dimensions
         if img.ndim == 3:
             # Extract the first channel of the image
@@ -131,7 +126,7 @@ def visualize_image(img, label=None, ax=None):
     # Check if an axis is provided for plotting
     if ax is None:
         # Create a new figure and axis with specific dimensions
-        fig, ax = plt.subplots(figsize=(5, 5))
+        _fig, ax = plt.subplots(figsize=(5, 5))
 
         # Set a flag to display the colorbar
         show_colorbar = True
@@ -204,7 +199,7 @@ def display_data_loader_contents(data_loader):
         print("data loader is empty.")
 
     # Catch any other general exceptions
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         # Print the specific error message
         print(f"An error occurred: {e}")
 
