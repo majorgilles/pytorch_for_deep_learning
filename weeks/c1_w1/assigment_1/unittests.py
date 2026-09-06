@@ -413,7 +413,7 @@ def exercise_4(learner_func, features, targets):
                 t.got = f"Loss at 5000th epoch: {learner_loss[0]}, Loss at 15000th epoch: {learner_loss[2]}"
                 return [t]
 
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             t = test_case()
             t.failed = True
             t.msg = "train_model raised an exception"
