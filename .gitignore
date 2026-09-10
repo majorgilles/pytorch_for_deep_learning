@@ -10,6 +10,7 @@ __pycache__/
 *.egg-info/
 data/
 EMNIST_data/
+cifar_100/
 models/
 *.pt
 *.pth
