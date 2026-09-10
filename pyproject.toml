@@ -11,6 +11,7 @@ dependencies = [
     "directory-tree>=1.0.0",
     "dlai-grader>=2.3.0",
     "fastai>=2.8.12",
+    "ipywidgets>=8.1.9",
     "matplotlib>=3.11.1",
     "pandas>=3.0.5",
     "pandas-stubs~=3.0.5",
